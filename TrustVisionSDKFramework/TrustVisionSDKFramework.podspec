@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '8.0'
     
     s.swift_version = '4.2'
-    s.resources = ['TrustVisionFramework/TrustVisionFramework/Frameworks/TrustVisionSDK.framework/TrustVisionSDK.bundle']
+    s.resources = ['TrustVisionSDKFramework/TrustVisionSDKFramework/Frameworks/TrustVisionSDK.framework/TrustVisionSDK.bundle']
     s.vendored_frameworks = [
         'TrustVisionSDKFramework/TrustVisionSDKFramework/Frameworks/TrustVisionSDK.framework'
     ]
