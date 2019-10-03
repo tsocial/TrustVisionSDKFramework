@@ -1,0 +1,16 @@
+PODS:
+  - TrustVisionSDKFramework (0.1.0)
+
+DEPENDENCIES:
+  - TrustVisionSDKFramework (from `../`)
+
+EXTERNAL SOURCES:
+  TrustVisionSDKFramework:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TrustVisionSDKFramework: 1d330552f475acde80fc41f2d3d6d886695f9afe
+
+PODFILE CHECKSUM: 0fc47a947a729b7a2d90c99e0689ecd3d2f1f20e
+
+COCOAPODS: 1.6.1
