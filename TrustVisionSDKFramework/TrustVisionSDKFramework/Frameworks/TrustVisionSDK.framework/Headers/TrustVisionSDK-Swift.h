@@ -196,6 +196,8 @@ typedef SWIFT_ENUM(NSInteger, CameraMode, closed) {
   CameraModeBack = 2,
 };
 
+
+
 typedef SWIFT_ENUM(NSInteger, LivenessOption, closed) {
   LivenessOptionActive = 0,
   LivenessOptionPassive = 1,
@@ -269,6 +271,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK7TSError")
 @property (nonatomic, readonly) enum TSErrorCategory category;
 @property (nonatomic, readonly, copy) NSString * _Nonnull errorCode;
 @property (nonatomic, readonly, copy) NSString * _Nullable desc;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
