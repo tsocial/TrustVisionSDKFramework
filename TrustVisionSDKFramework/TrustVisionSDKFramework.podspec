@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
         'TrustVisionSDKFramework/TrustVisionSDKFramework/Frameworks/TrustVisionSDK.framework'
     ]
     
-    s.dependency 'TrustVisionAPIFramework', '~> 1.0.0'
+    s.dependency 'TrustVisionAPIFramework', '~> 1.0.1'
 end
