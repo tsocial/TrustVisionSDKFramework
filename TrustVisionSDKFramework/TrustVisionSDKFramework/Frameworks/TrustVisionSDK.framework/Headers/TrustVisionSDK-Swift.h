@@ -205,7 +205,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
-typedef SWIFT_ENUM(NSInteger, CameraMode, open) {
+typedef SWIFT_ENUM(NSInteger, CameraMode, closed) {
   CameraModeBoth = 0,
   CameraModeFront = 1,
   CameraModeBack = 2,
@@ -213,7 +213,7 @@ typedef SWIFT_ENUM(NSInteger, CameraMode, open) {
 
 
 
-typedef SWIFT_ENUM(NSInteger, LivenessOption, open) {
+typedef SWIFT_ENUM(NSInteger, LivenessOption, closed) {
   LivenessOptionActive = 0,
   LivenessOptionPassive = 1,
 };
@@ -298,7 +298,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK10TVCardType")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, CardOrientation, open) {
+typedef SWIFT_ENUM(NSInteger, CardOrientation, closed) {
   CardOrientationLandscape = 0,
   CardOrientationPortrait = 1,
 };
@@ -312,7 +312,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK20TVCompareFacesResult")
 - (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM(NSInteger, MatchResult, open) {
+typedef SWIFT_ENUM(NSInteger, MatchResult, closed) {
   MatchResultMatched = 0,
   MatchResultUnmatched = 1,
   MatchResultUnsure = 2,
@@ -354,7 +354,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK7TVError")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, TVErrorCategory, open) {
+typedef SWIFT_ENUM(NSInteger, TVErrorCategory, closed) {
   TVErrorCategoryServer = 0,
   TVErrorCategoryLocal = 1,
 };
@@ -386,7 +386,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK21TVIdCardConfiguration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, TVCardSide, open) {
+typedef SWIFT_ENUM(NSInteger, TVCardSide, closed) {
   TVCardSideFront = 0,
   TVCardSideBack = 1,
 };
@@ -480,7 +480,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK11TVSDKConfig")
 + (TVSDKConfig * _Nonnull)defaultConfig SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM(NSInteger, Step, open) {
+typedef SWIFT_ENUM(NSInteger, Step, closed) {
   StepNone = -1,
   StepId_front = 0,
   StepId_back = 1,
@@ -493,7 +493,7 @@ typedef SWIFT_ENUM(NSInteger, Step, open) {
   StepSelfieSanity = 8,
 };
 
-typedef SWIFT_ENUM(NSInteger, ActionMode, open) {
+typedef SWIFT_ENUM(NSInteger, ActionMode, closed) {
   ActionModeFaceMatching = 0,
   ActionModeFull = 1,
   ActionModeLiveness = 2,
@@ -530,8 +530,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 @interface TrustVisionSdk : NSObject
 + (void)initializeWithIsForced:(BOOL)isForced success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
 + (void)initializeWithAccessKeyId:(NSString * _Nonnull)accessKeyId accessKeySecret:(NSString * _Nonnull)accessKeySecret isForced:(BOOL)isForced success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
-+ (UINavigationController * _Nullable)newCameraViewControllerWithConfig:(TVSDKConfig * _Nonnull)config error:(NSError * _Nullable * _Nullable)error callback:(void (^ _Nullable)(TVDetectionResult * _Nullable, TVError * _Nullable))callback SWIFT_WARN_UNUSED_RESULT;
-+ (NSArray<TVCardType *> * _Nullable)getCardTypesAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
++ (UINavigationController * _Nonnull)newCameraViewControllerWithConfig:(TVSDKConfig * _Nonnull)config callback:(void (^ _Nullable)(TVDetectionResult * _Nullable, TVError * _Nullable))callback SWIFT_WARN_UNUSED_RESULT;
++ (NSArray<TVCardType *> * _Nonnull)getCardTypes SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)getLivenessOptions SWIFT_WARN_UNUSED_RESULT;
 + (enum TVCameraOption)getSelfieCameraMode SWIFT_WARN_UNUSED_RESULT;
 + (BOOL)getIdCardSanityCheckingEnable SWIFT_WARN_UNUSED_RESULT;
