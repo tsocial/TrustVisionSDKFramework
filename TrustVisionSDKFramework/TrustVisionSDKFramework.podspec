@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'TrustVisionSDKFramework'
-    s.version          = '1.0.5'
+    s.version          = '1.0.6_beta'
     s.summary          = 'TrustVision SDK framework'
     s.description      = 'TrustVision SDK framework'
     s.homepage         = 'https://github.com/vknguyen1992_trustingsocial/TrustVisionSDKFramework'
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
     
     s.swift_version = '4.2'
     s.resources = ['TrustVisionSDKFramework/TrustVisionSDKFramework/Frameworks/TrustVisionSDK.framework/TrustVisionSDK.bundle']
-    s.vendored_frameworks = [
+    s.vendored_libraries = [
         'TrustVisionSDKFramework/TrustVisionSDKFramework/Frameworks/TrustVisionSDK.framework'
     ]
     
