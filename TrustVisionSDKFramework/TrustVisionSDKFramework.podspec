@@ -14,8 +14,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'https://github.com/vknguyen1992_trustingsocial/TrustVisionSDKFramework'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'vknguyen1992_trustingsocial' => 'nguyen.vu@trustingsocial.com' }
-    # s.source           = { :git => 'https://github.com/tsocial/TrustVisionSDKFramework.git', :tag => s.version.to_s }
-    s.source           = { :git => 'https://github.com/tsocial/TrustVisionSDKFramework.git', :branch => 'feature/static_library' }
+    s.source           = { :git => 'https://github.com/tsocial/TrustVisionSDKFramework.git', :tag => s.version.to_s }
     s.ios.deployment_target = '8.0'
     
     s.swift_version = '4.2'
