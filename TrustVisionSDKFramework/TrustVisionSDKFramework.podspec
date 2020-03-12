@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'TrustVisionSDKFramework'
-    s.version          = '1.0.6_beta'
+    s.version          = '1.0.6'
     s.summary          = 'TrustVision SDK framework'
     s.description      = 'TrustVision SDK framework'
     s.homepage         = 'https://github.com/vknguyen1992_trustingsocial/TrustVisionSDKFramework'
@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
         'TrustVisionSDKFramework/TrustVisionSDKFramework/Frameworks/TrustVisionSDK.framework'
     ]
     
-    s.dependency 'TrustVisionAPIFramework', '~> 1.0.6_beta'
+    s.dependency 'TrustVisionAPIFramework', '~> 1.0.6'
 end
