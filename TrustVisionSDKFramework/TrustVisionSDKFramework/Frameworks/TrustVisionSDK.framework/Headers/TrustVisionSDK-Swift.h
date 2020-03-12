@@ -380,7 +380,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK21TVIdCardConfiguration")
 @property (nonatomic) enum TVCardSide cardSide;
 @property (nonatomic) BOOL isSoundEnable;
 @property (nonatomic) BOOL isSanityRequired;
-- (nonnull instancetype)initWithCardType:(TVCardType * _Nonnull)cardType cardSide:(enum TVCardSide)cardSide isSoundEnable:(BOOL)isSoundEnable isSanityRequired:(BOOL)isSanityRequired OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic) BOOL isReadBothSide;
+- (nonnull instancetype)initWithCardType:(TVCardType * _Nonnull)cardType cardSide:(enum TVCardSide)cardSide isSoundEnable:(BOOL)isSoundEnable isSanityRequired:(BOOL)isSanityRequired isReadBothSide:(BOOL)isReadBothSide OBJC_DESIGNATED_INITIALIZER;
 + (TVIdCardConfiguration * _Nullable)dictToObjWithDict:(NSDictionary * _Nonnull)dict SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
