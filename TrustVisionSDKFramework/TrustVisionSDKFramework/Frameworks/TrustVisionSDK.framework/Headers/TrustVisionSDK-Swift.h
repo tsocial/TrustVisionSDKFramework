@@ -205,7 +205,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
-typedef SWIFT_ENUM(NSInteger, CameraMode, closed) {
+typedef SWIFT_ENUM(NSInteger, CameraMode, open) {
   CameraModeBoth = 0,
   CameraModeFront = 1,
   CameraModeBack = 2,
@@ -213,7 +213,7 @@ typedef SWIFT_ENUM(NSInteger, CameraMode, closed) {
 
 
 
-typedef SWIFT_ENUM(NSInteger, LivenessOption, closed) {
+typedef SWIFT_ENUM(NSInteger, LivenessOption, open) {
   LivenessOptionActive = 0,
   LivenessOptionPassive = 1,
 };
@@ -298,7 +298,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK10TVCardType")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, CardOrientation, closed) {
+typedef SWIFT_ENUM(NSInteger, CardOrientation, open) {
   CardOrientationLandscape = 0,
   CardOrientationPortrait = 1,
 };
@@ -312,7 +312,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK20TVCompareFacesResult")
 - (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM(NSInteger, MatchResult, closed) {
+typedef SWIFT_ENUM(NSInteger, MatchResult, open) {
   MatchResultMatched = 0,
   MatchResultUnmatched = 1,
   MatchResultUnsure = 2,
@@ -368,7 +368,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK7TVError")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, TVErrorCategory, closed) {
+typedef SWIFT_ENUM(NSInteger, TVErrorCategory, open) {
   TVErrorCategoryServer = 0,
   TVErrorCategoryLocal = 1,
 };
@@ -382,6 +382,12 @@ SWIFT_CLASS("_TtC14TrustVisionSDK27TVIDDetectionViewController")
 - (void)viewDidDisappear:(BOOL)animated;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UIImagePickerController;
+
+@interface TVIDDetectionViewController (SWIFT_EXTENSION(TrustVisionSDK)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> * _Nonnull)info;
 @end
 
 
@@ -402,7 +408,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK21TVIdCardConfiguration")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, TVCardSide, closed) {
+typedef SWIFT_ENUM(NSInteger, TVCardSide, open) {
   TVCardSideFront = 0,
   TVCardSideBack = 1,
 };
@@ -505,7 +511,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK11TVSDKConfig")
 + (TVSDKConfig * _Nonnull)defaultConfig SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM(NSInteger, Step, closed) {
+typedef SWIFT_ENUM(NSInteger, Step, open) {
   StepNone = -1,
   StepId_front = 0,
   StepId_back = 1,
@@ -519,7 +525,7 @@ typedef SWIFT_ENUM(NSInteger, Step, closed) {
   StepIdCardTampering = 9,
 };
 
-typedef SWIFT_ENUM(NSInteger, ActionMode, closed) {
+typedef SWIFT_ENUM(NSInteger, ActionMode, open) {
   ActionModeFaceMatching = 0,
   ActionModeFull = 1,
   ActionModeLiveness = 2,
