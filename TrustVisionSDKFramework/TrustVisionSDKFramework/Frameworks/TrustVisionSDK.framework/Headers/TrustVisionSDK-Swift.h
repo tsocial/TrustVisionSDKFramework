@@ -184,7 +184,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import CoreGraphics;
 @import Foundation;
 @import ObjectiveC;
-@import TrustVisionAPI;
 @import UIKit;
 #endif
 
@@ -216,6 +215,7 @@ typedef SWIFT_ENUM(NSInteger, CameraMode, closed) {
 typedef SWIFT_ENUM(NSInteger, LivenessOption, closed) {
   LivenessOptionActive = 0,
   LivenessOptionPassive = 1,
+  LivenessOptionHybrid = 2,
 };
 
 
@@ -257,30 +257,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) Class _Nonnull layer
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 @end
 
-@class CardInfo;
-@class TVCardInfoResponse;
-
-SWIFT_CLASS("_TtC14TrustVisionSDK16TVCardInfoResult")
-@interface TVCardInfoResult : TVBasePollingResult
-@property (nonatomic, copy) NSArray<CardInfo *> * _Nonnull infos;
-@property (nonatomic, copy) NSString * _Nullable croppedImage1Id;
-@property (nonatomic, copy) NSString * _Nullable croppedImage2Id;
-- (nonnull instancetype)initWithRequestId:(NSString * _Nullable)requestId infos:(NSArray<CardInfo *> * _Nonnull)infos croppedImage1Id:(NSString * _Nullable)croppedImage1Id croppedImage2Id:(NSString * _Nullable)croppedImage2Id OBJC_DESIGNATED_INITIALIZER;
-+ (TVCardInfoResult * _Nullable)fromApiObjectWithCardInfoResponse:(TVCardInfoResponse * _Nullable)cardInfoResponse SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtCC14TrustVisionSDK16TVCardInfoResult8CardInfo")
-@interface CardInfo : NSObject
-@property (nonatomic, copy) NSString * _Nullable field;
-@property (nonatomic, copy) NSString * _Nullable value;
-- (nonnull instancetype)initWithField:(NSString * _Nullable)field value:(NSString * _Nullable)value OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
 enum CardOrientation : NSInteger;
-@class TVQrSdk;
 @class NSDictionary;
 
 SWIFT_CLASS("_TtC14TrustVisionSDK10TVCardType")
@@ -289,11 +266,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK10TVCardType")
 @property (nonatomic, copy) NSString * _Nonnull name;
 @property (nonatomic) enum CardOrientation orientation;
 @property (nonatomic) BOOL hasBackSide;
-@property (nonatomic, strong) TVQrSdk * _Nonnull frontQr;
-@property (nonatomic, strong) TVQrSdk * _Nonnull backQr;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id name:(NSString * _Nonnull)name orientation:(enum CardOrientation)orientation hasBackSide:(BOOL)hasBackSide frontQr:(TVQrSdk * _Nonnull)frontQr backQr:(TVQrSdk * _Nonnull)backQr OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id name:(NSString * _Nonnull)name orientation:(enum CardOrientation)orientation hasBackSide:(BOOL)hasBackSide OBJC_DESIGNATED_INITIALIZER;
 + (TVCardType * _Nullable)dictToObjWithDict:(NSDictionary * _Nonnull)dict SWIFT_WARN_UNUSED_RESULT;
-- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -303,75 +277,27 @@ typedef SWIFT_ENUM(NSInteger, CardOrientation, closed) {
   CardOrientationPortrait = 1,
 };
 
-enum MatchResult : NSInteger;
-
-SWIFT_CLASS("_TtC14TrustVisionSDK20TVCompareFacesResult")
-@interface TVCompareFacesResult : TVBasePollingResult
-@property (nonatomic) float score;
-@property (nonatomic) enum MatchResult matchResult;
-- (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
-@end
-
-typedef SWIFT_ENUM(NSInteger, MatchResult, closed) {
-  MatchResultMatched = 0,
-  MatchResultUnmatched = 1,
-  MatchResultUnsure = 2,
-};
-
-@class TVError;
-@class TVIdCardTampering;
-
-SWIFT_CLASS("_TtC14TrustVisionSDK29TVDetectIdCardTamperingResult")
-@interface TVDetectIdCardTamperingResult : TVBasePollingResult
-@property (nonatomic) BOOL isGood;
-@property (nonatomic) float score;
-@property (nonatomic, strong) TVError * _Nullable error;
-- (nullable instancetype)initWithIdCardTampering:(TVIdCardTampering * _Nullable)idCardTampering requestId:(NSString * _Nullable)requestId OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class TVSDKConfig;
-enum ActionMode : NSInteger;
-@class TVLivenessResult;
-@class TVSanityResult;
 @class UIImage;
 
 SWIFT_CLASS("_TtC14TrustVisionSDK17TVDetectionResult")
 @interface TVDetectionResult : NSObject
-@property (nonatomic, strong) TVSDKConfig * _Nullable config;
-@property (nonatomic, strong) TVCardType * _Nullable cardType;
-@property (nonatomic) enum ActionMode actionMode;
-@property (nonatomic, strong) TVCompareFacesResult * _Nullable compareImageResult;
-@property (nonatomic, strong) TVCardInfoResult * _Nullable cardInfoResult;
-@property (nonatomic, strong) TVLivenessResult * _Nullable livenessResult;
-@property (nonatomic, strong) TVSanityResult * _Nullable idSanityResult;
-@property (nonatomic, strong) TVSanityResult * _Nullable selfieSanityResult;
-@property (nonatomic, strong) TVDetectIdCardTamperingResult * _Nullable idCardTamperingResult;
-@property (nonatomic, strong) UIImage * _Nullable selfieImage;
+@property (nonatomic, copy) NSArray<UIImage *> * _Nonnull selfieImages;
+@property (nonatomic) BOOL isLive;
 @property (nonatomic, strong) UIImage * _Nullable frontIdImage;
 @property (nonatomic, strong) UIImage * _Nullable backIdImage;
-@property (nonatomic, copy) NSString * _Nullable selfieImageId;
-@property (nonatomic, copy) NSString * _Nullable frontIdImageId;
-@property (nonatomic, copy) NSString * _Nullable backIdImageId;
 - (NSDictionary<NSString *, id> * _Nullable)toDictionary SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-enum TVErrorCategory : NSInteger;
 
 SWIFT_CLASS("_TtC14TrustVisionSDK7TVError")
 @interface TVError : NSObject
-@property (nonatomic, readonly) enum TVErrorCategory category;
 @property (nonatomic, readonly, copy) NSString * _Nonnull errorCode;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
-typedef SWIFT_ENUM(NSInteger, TVErrorCategory, closed) {
-  TVErrorCategoryServer = 0,
-  TVErrorCategoryLocal = 1,
-};
 
 
 SWIFT_CLASS("_TtC14TrustVisionSDK27TVIDDetectionViewController")
@@ -384,12 +310,6 @@ SWIFT_CLASS("_TtC14TrustVisionSDK27TVIDDetectionViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIImagePickerController;
-
-@interface TVIDDetectionViewController (SWIFT_EXTENSION(TrustVisionSDK)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> * _Nonnull)info;
-@end
-
 
 
 enum TVCardSide : NSInteger;
@@ -397,12 +317,10 @@ enum TVCardSide : NSInteger;
 SWIFT_CLASS("_TtC14TrustVisionSDK21TVIdCardConfiguration")
 @interface TVIdCardConfiguration : NSObject
 @property (nonatomic, strong) TVCardType * _Null_unspecified cardType;
-@property (nonatomic) enum TVCardSide cardSide;
 @property (nonatomic) BOOL isSoundEnable;
-@property (nonatomic) BOOL isSanityRequired;
 @property (nonatomic) BOOL isReadBothSide;
-@property (nonatomic) BOOL isIdCardTamperingDetectionEnable;
-- (nonnull instancetype)initWithCardType:(TVCardType * _Nonnull)cardType cardSide:(enum TVCardSide)cardSide isSoundEnable:(BOOL)isSoundEnable isSanityRequired:(BOOL)isSanityRequired isReadBothSide:(BOOL)isReadBothSide isIdCardTamperingDetectionEnable:(BOOL)isIdCardTamperingDetectionEnable OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic) enum TVCardSide cardSide;
+- (nonnull instancetype)initWithCardType:(TVCardType * _Nonnull)cardType isSoundEnable:(BOOL)isSoundEnable isReadBothSide:(BOOL)isReadBothSide cardSide:(enum TVCardSide)cardSide OBJC_DESIGNATED_INITIALIZER;
 + (TVIdCardConfiguration * _Nullable)dictToObjWithDict:(NSDictionary * _Nonnull)dict SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -414,7 +332,6 @@ typedef SWIFT_ENUM(NSInteger, TVCardSide, closed) {
 };
 
 
-/// Camera View Controller
 /// Features: capture image, detech faces…
 SWIFT_CLASS("_TtC14TrustVisionSDK33TVLivenessDetectionViewController")
 @interface TVLivenessDetectionViewController : TVBaseDetectionViewController
@@ -428,167 +345,58 @@ SWIFT_CLASS("_TtC14TrustVisionSDK33TVLivenessDetectionViewController")
 
 
 
-@class TVVerifyLivenessResponse;
-
-SWIFT_CLASS("_TtC14TrustVisionSDK16TVLivenessResult")
-@interface TVLivenessResult : TVBasePollingResult
-@property (nonatomic) float score;
-@property (nonatomic) BOOL isLive;
-+ (TVLivenessResult * _Nullable)fromApiObjectWithApiLivenessResponse:(TVVerifyLivenessResponse * _Nullable)apiLivenessResponse SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-SWIFT_CLASS("_TtC14TrustVisionSDK18TVLocalizationFile")
-@interface TVLocalizationFile : NSObject
-- (nonnull instancetype)initWithLanguageCode:(NSString * _Nonnull)languageCode contentData:(NSData * _Nullable)contentData OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC14TrustVisionSDK25TVQRScannerViewController")
-@interface TVQRScannerViewController : TVBaseDetectionViewController
-- (void)viewDidLoad;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC14TrustVisionSDK7TVQrSdk")
-@interface TVQrSdk : NSObject
-@property (nonatomic) BOOL exist;
-@property (nonatomic) enum TVQRType type;
-@property (nonatomic) float widthHeightRatio;
-- (nonnull instancetype)initWithExist:(BOOL)exist type:(enum TVQRType)type widthHeightRatio:(float)widthHeightRatio OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@protocol UIViewControllerTransitionCoordinator;
-
-SWIFT_CLASS("_TtC14TrustVisionSDK22TVResultViewController")
-@interface TVResultViewController : UIViewController
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator> _Nonnull)coordinator;
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class UITableView;
-@class UITableViewCell;
-
-@interface TVResultViewController (SWIFT_EXTENSION(TrustVisionSDK)) <UITableViewDataSource>
-- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
+enum ActionMode : NSInteger;
 
 SWIFT_CLASS("_TtC14TrustVisionSDK11TVSDKConfig")
 @interface TVSDKConfig : NSObject
 @property (nonatomic) enum ActionMode actionMode;
-@property (nonatomic, strong) TVCardType * _Null_unspecified cardType;
-@property (nonatomic) enum TVLivenessOption livenessMode;
 @property (nonatomic) BOOL isEnableSound;
-@property (nonatomic) BOOL isEnableVerifyMultipleFaces;
-@property (nonatomic) BOOL isEnableVerifyPortraitSanity;
-@property (nonatomic) BOOL isEnableVerifyIDSanity;
-@property (nonatomic) enum TVCameraOption selfieCameraMode;
-@property (nonatomic) BOOL isEnableDetectingIdCardTampering;
-+ (TVSDKConfig * _Nullable)dictToObjWithDict:(NSDictionary * _Nonnull)dict SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@property (nonatomic, strong) TVCardType * _Null_unspecified cardType;
+@property (nonatomic) BOOL doReadBothSide;
+@property (nonatomic) enum TVCardSide cardSide;
+@property (nonatomic) enum LivenessOption livenessMode;
+@property (nonatomic) enum CameraMode selfieCameraMode;
 /// Create default config
 ///
 /// returns:
 /// config
 + (TVSDKConfig * _Nonnull)defaultConfig SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 typedef SWIFT_ENUM(NSInteger, Step, closed) {
   StepNone = -1,
   StepId_front = 0,
   StepId_back = 1,
-  StepQr_front = 2,
-  StepQr_back = 3,
-  StepCardInfo = 4,
   StepLiveness = 5,
-  StepFaceMatching = 6,
-  StepCardSanity = 7,
-  StepSelfieSanity = 8,
-  StepIdCardTampering = 9,
 };
 
 typedef SWIFT_ENUM(NSInteger, ActionMode, closed) {
-  ActionModeFaceMatching = 0,
-  ActionModeFull = 1,
-  ActionModeLiveness = 2,
-  ActionModeExtractIdInfo = 3,
+  ActionModeSelfieCapturing = 0,
+  ActionModeIdCapturing = 1,
 };
-
-@class TVSanity;
-
-SWIFT_CLASS("_TtC14TrustVisionSDK14TVSanityResult")
-@interface TVSanityResult : TVBasePollingResult
-@property (nonatomic) BOOL isGood;
-@property (nonatomic) float score;
-@property (nonatomic, strong) TVError * _Nullable error;
-- (nullable instancetype)initWithSanity:(TVSanity * _Nullable)sanity requestId:(NSString * _Nullable)requestId OBJC_DESIGNATED_INITIALIZER;
-@end
 
 
 SWIFT_CLASS("_TtC14TrustVisionSDK21TVSelfieConfiguration")
 @interface TVSelfieConfiguration : NSObject
-@property (nonatomic) enum TVCameraOption cameraOption;
+@property (nonatomic) enum CameraMode cameraOption;
 @property (nonatomic) BOOL isSoundEnable;
-@property (nonatomic) BOOL isSanityRequired;
-@property (nonatomic) enum TVLivenessOption livenessMode;
-- (nonnull instancetype)initWithCameraOption:(enum TVCameraOption)cameraOption isSoundEnable:(BOOL)isSoundEnable isSanityRequired:(BOOL)isSanityRequired livenessMode:(enum TVLivenessOption)livenessMode OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic) enum LivenessOption livenessMode;
+- (nonnull instancetype)initWithCameraOption:(enum CameraMode)cameraOption isSoundEnable:(BOOL)isSoundEnable livenessMode:(enum LivenessOption)livenessMode OBJC_DESIGNATED_INITIALIZER;
 + (TVSelfieConfiguration * _Nullable)dictToObjWithDict:(NSDictionary * _Nonnull)dict SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
-@class UIPresentationController;
-
-@interface TVViewController (SWIFT_EXTENSION(TrustVisionSDK)) <UIAdaptivePresentationControllerDelegate>
-- (void)presentationControllerDidDismiss:(UIPresentationController * _Nonnull)presentationController;
-@end
-
 @class UINavigationController;
 
 SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 @interface TrustVisionSdk : NSObject
-+ (void)initializeWithLocalizationFiles:(NSArray<TVLocalizationFile *> * _Nullable)localizationFiles isForced:(BOOL)isForced success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
-+ (void)initializeWithAccessKeyId:(NSString * _Nonnull)accessKeyId accessKeySecret:(NSString * _Nonnull)accessKeySecret localizationFiles:(NSArray<TVLocalizationFile *> * _Nullable)localizationFiles isForced:(BOOL)isForced success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
-+ (UINavigationController * _Nonnull)newCameraViewControllerWithConfig:(TVSDKConfig * _Nonnull)config success:(void (^ _Nonnull)(TVDetectionResult * _Nonnull))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure cancellation:(void (^ _Nonnull)(void))cancellation SWIFT_WARN_UNUSED_RESULT;
-+ (NSArray<TVCardType *> * _Nonnull)getCardTypes SWIFT_WARN_UNUSED_RESULT;
-+ (NSArray<NSString *> * _Nonnull)getLivenessOptions SWIFT_WARN_UNUSED_RESULT;
-+ (enum TVCameraOption)getSelfieCameraMode SWIFT_WARN_UNUSED_RESULT;
-+ (BOOL)getIdCardSanityCheckingEnable SWIFT_WARN_UNUSED_RESULT;
-+ (BOOL)getSelfieSanityCheckingEnable SWIFT_WARN_UNUSED_RESULT;
-+ (BOOL)getSupportTransaction SWIFT_WARN_UNUSED_RESULT;
-+ (void)startTransactionWithReferenceId:(NSString * _Nullable)referenceId success:(void (^ _Nonnull)(NSString * _Nullable))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
-+ (void)endTransactionWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
-+ (UINavigationController * _Nonnull)startIdCapturingWithConfiguration:(TVIdCardConfiguration * _Nonnull)configuration success:(void (^ _Nonnull)(TVDetectionResult * _Nonnull))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure cancellation:(void (^ _Nonnull)(void))cancellation SWIFT_WARN_UNUSED_RESULT;
-+ (UINavigationController * _Nonnull)startSelfieCapturingWithConfiguration:(TVSelfieConfiguration * _Nonnull)configuration success:(void (^ _Nonnull)(TVDetectionResult * _Nonnull))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure cancellation:(void (^ _Nonnull)(void))cancellation SWIFT_WARN_UNUSED_RESULT;
-+ (void)matchFaceWithImage1Id:(NSString * _Nonnull)image1Id image2Id:(NSString * _Nonnull)image2Id success:(void (^ _Nonnull)(TVCompareFacesResult * _Nonnull))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
-+ (void)downloadImageWithImageId:(NSString * _Nonnull)imageId success:(void (^ _Nonnull)(UIImage * _Nullable))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
++ (UINavigationController * _Nonnull)startIdCapturingWithConfiguration:(TVIdCardConfiguration * _Nonnull)configuration success:(void (^ _Nonnull)(TVDetectionResult * _Nonnull))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure SWIFT_WARN_UNUSED_RESULT;
++ (UINavigationController * _Nonnull)startSelfieCapturingWithConfiguration:(TVSelfieConfiguration * _Nonnull)configuration success:(void (^ _Nonnull)(TVDetectionResult * _Nonnull))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
-
-
-
-
-
-
 
 
 
