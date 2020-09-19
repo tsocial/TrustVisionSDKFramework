@@ -359,6 +359,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK33TVLivenessDetectionViewController")
 typedef SWIFT_ENUM(NSInteger, TVLivenessOption, closed) {
   TVLivenessOptionActive = 0,
   TVLivenessOptionPassive = 1,
+  TVLivenessOptionHybrid = 2,
 };
 
 
@@ -813,6 +814,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK33TVLivenessDetectionViewController")
 typedef SWIFT_ENUM(NSInteger, TVLivenessOption, closed) {
   TVLivenessOptionActive = 0,
   TVLivenessOptionPassive = 1,
+  TVLivenessOptionHybrid = 2,
 };
 
 
@@ -1270,6 +1272,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK33TVLivenessDetectionViewController")
 typedef SWIFT_ENUM(NSInteger, TVLivenessOption, closed) {
   TVLivenessOptionActive = 0,
   TVLivenessOptionPassive = 1,
+  TVLivenessOptionHybrid = 2,
 };
 
 
@@ -1724,6 +1727,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK33TVLivenessDetectionViewController")
 typedef SWIFT_ENUM(NSInteger, TVLivenessOption, closed) {
   TVLivenessOptionActive = 0,
   TVLivenessOptionPassive = 1,
+  TVLivenessOptionHybrid = 2,
 };
 
 
