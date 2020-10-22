@@ -639,6 +639,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+
+
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif
@@ -1261,6 +1263,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 + (void)downloadImageWithImageId:(NSString * _Nonnull)imageId success:(void (^ _Nonnull)(UIImage * _Nullable))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 
 
@@ -1928,6 +1932,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+
+
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif
@@ -2550,6 +2556,8 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 + (void)downloadImageWithImageId:(NSString * _Nonnull)imageId success:(void (^ _Nonnull)(UIImage * _Nullable))success failure:(void (^ _Nonnull)(TVError * _Nonnull))failure;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 
 
