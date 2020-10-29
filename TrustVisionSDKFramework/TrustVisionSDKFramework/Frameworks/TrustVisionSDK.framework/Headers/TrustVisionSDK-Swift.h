@@ -496,6 +496,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK16TVLivenessResult")
 @interface TVLivenessResult : TVBasePollingResult
 @property (nonatomic) float score;
 @property (nonatomic) BOOL isLive;
+@property (nonatomic, copy) NSString * _Nonnull verdict;
 + (TVLivenessResult * _Nullable)fromApiObjectWithApiLivenessResponse:(TVVerifyLivenessResponse * _Nullable)apiLivenessResponse SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -1207,6 +1208,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK16TVLivenessResult")
 @interface TVLivenessResult : TVBasePollingResult
 @property (nonatomic) float score;
 @property (nonatomic) BOOL isLive;
+@property (nonatomic, copy) NSString * _Nonnull verdict;
 + (TVLivenessResult * _Nullable)fromApiObjectWithApiLivenessResponse:(TVVerifyLivenessResponse * _Nullable)apiLivenessResponse SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -1921,6 +1923,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK16TVLivenessResult")
 @interface TVLivenessResult : TVBasePollingResult
 @property (nonatomic) float score;
 @property (nonatomic) BOOL isLive;
+@property (nonatomic, copy) NSString * _Nonnull verdict;
 + (TVLivenessResult * _Nullable)fromApiObjectWithApiLivenessResponse:(TVVerifyLivenessResponse * _Nullable)apiLivenessResponse SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -2632,6 +2635,7 @@ SWIFT_CLASS("_TtC14TrustVisionSDK16TVLivenessResult")
 @interface TVLivenessResult : TVBasePollingResult
 @property (nonatomic) float score;
 @property (nonatomic) BOOL isLive;
+@property (nonatomic, copy) NSString * _Nonnull verdict;
 + (TVLivenessResult * _Nullable)fromApiObjectWithApiLivenessResponse:(TVVerifyLivenessResponse * _Nullable)apiLivenessResponse SWIFT_WARN_UNUSED_RESULT;
 @end
 
