@@ -689,6 +689,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UIButton (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -703,6 +706,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UILabel (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -1401,6 +1407,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UIButton (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -1415,6 +1424,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UILabel (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -2116,6 +2128,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UIButton (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -2130,6 +2145,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UILabel (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -2828,6 +2846,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UIButton (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
@@ -2842,6 +2863,9 @@ SWIFT_CLASS("_TtC14TrustVisionSDK14TrustVisionSdk")
 
 
 
+@interface UILabel (SWIFT_EXTENSION(TrustVisionSDK))
+@property (nonatomic, copy) IBInspectable NSString * _Nullable xibLocKey;
+@end
 
 
 
